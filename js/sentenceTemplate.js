@@ -50,7 +50,7 @@ sentenceTemplate = (detectedObject) => {
 	let sentence = '';
 
 	if (noObject) {
-		return `Sorry, the app cannot understand the image. Please try with othger image`;
+		return `Sorry, the app cannot understand the image. Please try with other image`;
 	} else if (singleObject) {
 		return `There is one ${detectedObjectArr[0]}`;
 	} else {
