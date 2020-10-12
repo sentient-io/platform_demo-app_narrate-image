@@ -36,7 +36,7 @@ function handleDrop(e) {
 // Handle picture preview
 uploadSingplePic = (files) => {
   if (files[0].size >= fileSizeLimit){
-	$('#pic-size-alert').show()
+	$('#pic-size-alert').modal('toggle')
 	$('#single-pic-input').val('') // Clean fields
   } else {
 	previewFile(Object.values(files)[0]);

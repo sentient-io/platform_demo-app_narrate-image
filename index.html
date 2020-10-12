@@ -16,18 +16,6 @@
     <link rel="stylesheet" type="text/css" href="css/sentiestyle.css">
     <link rel="stylesheet" type="text/css" href="css/imageNarration.css">
 
-    <!-- Import Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-        crossorigin="anonymous"></script>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="app.js"></script>
 
     <style>
@@ -149,7 +137,7 @@ Do note the 5MB image file size limit.
                         <div class="col-sm-4 col-12 text-center">
                             <button class="px-4 sentie-btn-primary sentie-btn-green" id="detect-pic-object-btn"
                                 onclick="detectPicObject()">
-                                Narrate Image</button>
+                                Analyse Image</button>
                             <button class="px-4 sentie-btn-primary sentie-btn-grey" id="restart-btn" onclick="restart()"
                                 style="display: none;">Restart</button>
                         </div>
@@ -184,13 +172,29 @@ Do note the 5MB image file size limit.
     </footer>
     <!-- End footer -->
 
-</body>
+    <!-- Import Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+
     <!-- app js is where to place the API key -->
     
     <script src="js/script.js"></script>
-    <script src="js/sentenctTemplate.js"></script>
 	<script src="js/narrateObject.js"></script>
 	<script src="js/detectObject.js"></script>
+    <script src="js/sentenctTemplate.js"></script>
+
+</body>
 <script>
 
 </script>
