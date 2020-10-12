@@ -1,16 +1,25 @@
 plural = (item) => {
 
-	let irregularPlural = ['bus ', 'benches ', 'wine glass ', 'sandwich ', 'toothbrush '];
-	let noPlural = ['scissors ']
+	let esPlural = ['bus', 'bench', 'wine glass', 'sandwich'];
+	let noPlural = ['scissors', 'sheep']
+	let vesPlural = ['giraffe', 'knife']
 
-	if (item === 'person ') {
+	item = $.trim(item)
+
+	console.log(item)
+
+	if (item === 'person') {
 		return 'people';
-	} else if (irregularPlural.includes(item)){
-		return $.trim(item) + 'es';
+	}else if (item === 'mouse') {
+		return 'mice'
+	} else if (esPlural.includes(item)){
+		return item + 'es';
+	} else if (vesPlural.includes(item)){
+		return item.replace('fe', 'ves')
 	} else if (noPlural.includes(item)){
 		return item
-	}else {
-		return item.replace(/\s/g, 's');
+	} else {
+		return item + 's';
 	}
 };
 
@@ -41,7 +50,7 @@ sentenceTemplate = (detectedObject) => {
 	let sentence = '';
 
 	if (noObject) {
-		return `Sorry, the app cannot understand the image. Please try with other image`;
+		return `Sorry, the app cannot understand the image. Please try with othger image`;
 	} else if (singleObject) {
 		return `There is one ${detectedObjectArr[0]}`;
 	} else {

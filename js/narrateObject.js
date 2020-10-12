@@ -2,7 +2,6 @@ narrateObject = (narratedObject) => {
 	// <p> tag will contains the narrated text
 	let narrateResult = document.createElement('p');
 	narrateResult.innerHTML = narratedObject;
-console.log(apikey);
 	// Calling text to speech microservice
 	$.ajax({
 		method: 'POST',
@@ -11,7 +10,6 @@ console.log(apikey);
 		headers: { 'x-api-key': apikey, 'Content-Type': 'application/json' },
 		data: JSON.stringify({ text: JSON.stringify(narratedObject) }),
 		success: (response) => {
-			console.log(response);
 			$('#restart-btn').show()
 			// Create audio element contains the text to speech result
 			let audio = document.createElement('audio');
@@ -37,7 +35,6 @@ console.log(apikey);
 			$('#narration-result-container').append(audio);
 		},
 		error: (err) => {
-			console.log(err);
 			$('#restart-btn').show()
 		},
 	});

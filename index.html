@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Narrate Image</title>
-
+    <link rel="icon" type="image/svg" href="img/Sentient-io_fav.svg"/>
     <!-- Import Bootstrap Stylesheet -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -79,17 +79,16 @@ Do note the 5MB image file size limit.
                 <div id="demo-app-functions">
 
                     <!-- Single Picture Uploader -->
-                    <!-- File Size Alert -->
-                    <div class="modal fade" id="pic-size-alert" tabindex="-1" area-hidden="true">
+
+                    <!-- Popup Alert -->
+                    <div class="modal fade" id="warning-popup" tabindex="-1" area-hidden="true">
                         <div class="modal-dialog d-flex" style="height:100vh">
                             <div class="modal-content m-auto p-2">
                                 <div class="modal-header d-flex justify-content-center">
-                                    <h5 class="modal-title">Image size over 5MB</h5>
+                                    <h5 class="modal-title" id="warning-title"></h5>
                                 </div>
                                 <div class="modal-bocy p-3">
-                                    <p>For demo purpose, image size been limited to 5MB, please uplaod image with
-                                        smaller
-                                        size or reduce camera resolution</p>
+                                    <p id="warning-content"> </p>
                                 </div>
                                 <div class="modal-footer d-flex justify-content-center">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -97,6 +96,8 @@ Do note the 5MB image file size limit.
                             </div>
                         </div>
                     </div>
+                    <!-- END Popup Alert -->
+
                     <div id="single-pic-preview" class="d-flex justify-content-center">
                         <div id="picture-loader" class="p-3 position-absolute" style="display: none !important;">
                             <div class="d-flex flex-column align-items-center justify-content-center"
