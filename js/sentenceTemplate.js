@@ -1,6 +1,6 @@
 plural = (item) => {
 
-	let irregularPlural = ['bus ', 'benches ', 'wine glass ', 'sandwich ', 'toothbrush '];
+	let irregularPlural = ['bus ', 'bench ', 'wine glass ', 'sandwich ', 'toothbrush '];
 	let noPlural = ['scissors ']
 
 	if (item === 'person ') {
@@ -9,7 +9,7 @@ plural = (item) => {
 		return $.trim(item) + 'es';
 	} else if (noPlural.includes(item)){
 		return item
-	}else {
+	} else {
 		return item.replace(/\s/g, 's');
 	}
 };
