@@ -1,201 +1,229 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Narrate Image</title>
-    <link rel="icon" type="image/svg" href="img/Sentient-io_fav.svg"/>
-    <!-- Import Bootstrap Stylesheet -->
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="icon" type="image/svg" href="img/Sentient-io_fav.svg" />
+
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="css/demoapps.css">
+    <link rel="stylesheet" tyep="text/css" href="css/color.css">
 
     <!-- Import Google Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="css/sentiestyle.css">
-    <link rel="stylesheet" type="text/css" href="css/imageNarration.css">
+    <!-- Import Fontawsome -->
+    <script src="https://kit.fontawesome.com/0596f25b73.js" crossorigin="anonymous"></script>
 
-    <style>
-        .icon-bg {
-            background-color: #F8F8FA;
-            border-radius: 999px;
-            width: 96px;
-            height: 96px;
-            margin: auto;
-        }
-    </style>
+    <!-- Testing, track image uploading time -->
+    <script>
+        console.log('Loading Start')
+        let loadTime = new Date().getTime()
+        console.log(new Date().getTime() - loadTime)
+    </script>
+
+    <title>Narrate Image</title>
 </head>
 
 <body>
-    <div class="bg-wave-pattern" style="min-height: calc(100vh - 100px);">
-        <div class="m-auto p-md-5 p-3" style="max-width:1000px">
-            <!-- Header Content, title and description -->
+    <!-- +--------------------+ -->
+    <!-- | Full Screen Loader | -->
+    <!-- +--------------------+ -->
+    <!-- Place Loader right after body tag, above eveything else -->
+    <script src="js/loader.js" async></script>
+    <div id="loader" style="display:none;">
+        <div class="align-items-center d-flex flex-column justify-content-center s-full-screen-loader">
+            <img src="img/sentie-loader.gif" width="180px" height="auto" alt="">
+            <p>Processing ... </p>
+            <p id="loader-text" class="mx-5" style="max-width: 500px; text-align: center;"></p>
+        </div>
+    </div>
+    <!-- -END- Full Screen Loader -->
+
+    <!-- +---------------+ -->
+    <!-- | Main Container| -->
+    <!-- +---------------+ -->
+    <div class="pb-5 s-bg-wave" style="min-height: calc(100vh - 100px);">
+        <div class="m-auto p-md-5 p-3" style="max-width:1200px">
+            <!-- +--------------------+ -->
+            <!-- | Alert Popup Window | -->
+            <!-- +--------------------+ -->
+            <div class="modal fade" id="alert" tabindex="-1" area-hidden="true">
+                <div class="modal-dialog d-flex" style="height:100vh">
+                    <div class="modal-content m-auto p-2">
+                        <div class="modal-header d-flex justify-content-center">
+                            <h5 class="modal-title" id="alertTitle"></h5>
+                        </div>
+                        <div class="modal-body p-3">
+                            <p id="alertContent"></p>
+                        </div>
+                        <div class="modal-footer d-flex justify-content-center">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- -END- Alert Popup Window -->
+
+            <!-- +------------------+ -->
+            <!-- | Demo Apps Header | -->
+            <!-- +------------------+ -->
             <div id="header-contianer" class="d-flex flex-column flex-md-row  justify-content-md-between">
                 <div id="header-container-l" class="d-flex flex-column col-md-8">
                     <div class="d-flex flex-row">
                         <h4>Narrate Image</h4><span class="ml-2 p-2 badge badge-pill"
-                            style="background-color:#B71C1C; color:white; height: 28px;"><i>demo</i></span>
+                            style="background-color:#B71C1C; color:white; height: 28px;"><i>DEMO</i></span>
                     </div>
                     <div>
                         <p>
-                            This demo app takes a photo or uploaded picture, analyses object within and narrates it in a human-friendly sentence. 
-<br><br>
-Do note the 5MB image file size limit.
+                            This demo app takes a photo or uploaded picture, analyses object within and narrates it in a
+                            human-friendly sentence.
+                            <br>
+                            <br>
+                            Do note the 5MB image file size limit.
                         </p>
                     </div>
                 </div>
-                <div id="header-container-r" class="d-flex flex-row flex-md-column col-md-3 justify-content-center">
-                    <a href="https://platform.sentient.io/demoapps_detail#narrate_image" target="_blank"
-                        class="mb-3 mx-auto d-block text-center sentie-btn-seconday"
+                <div id="header-container-r"
+                    class="d-flex flex-row flex-md-column col-md-3 justify-content-center demo-app-btn-container">
+                    <a href="#" target="_blank" class="mb-3 mx-auto d-block text-center s-btn-secondary"
                         style="width: 200px;background: #f5f5f5;">
                         More Info
                     </a>
-                    <a href="https://github.com/sentient-io/platform_demo-app_narrate-image" target="_blank"
-                        class="mb-3 mx-auto text-center sentie-btn-primary sentie-btn-grey" style="width: 200px;">
+                    <a href="#" target="_blank" class="mb-3 mx-auto text-center s-btn-primary s-btn-grey"
+                        style="width: 200px;">
                         Demo App Code
                     </a>
                 </div>
             </div>
-            <!-- END Header Content, title and description -->
-            
+            <!-- -END- Header Content, title and description -->
 
-            <!-- Demo App Main Area -->
-            <div id="demo-app-container" class="mt-5">
+            <!-- Demp App Container -->
+            <div class="p-3 mt-5 d-flex flex-column flex-lg-row" >
 
-                <div id="demo-app-title" class="mb-4 text-center">
-                    <p class="mb-0">Welcome to</p>
-                    <h2>Narrate Image App</h2>
-                </div>
+                <!-- Add class "col-lg-6" to below div for result display -->
+                <div id="functionsContianer" class="col-12">
+                    <!-- +------------------------------+ -->
+                    <!-- | Demo APP Functions Goes Here | -->
+                    <!-- +------------------------------+ -->
 
-                <div class="d-flex justify-content-center">
-                </div>
+                    <!-- +----------------+ -->
+                    <!-- | Image Uploader | -->
+                    <!-- +----------------+ -->
+                    <script src="js/imgUploader.js" async></script>
+                    <script src="js/canvas.js" async></script>
 
-                <!-- Video preview, snapped photo and uploaded image -->
-                <div id="pic-container" class="m-auto d-flex justify-content-center"
-                    style="width:100%; max-width: 640px;">
-                </div>
+                    <!-- Img Preview -->
+                    <div id="s-img-preview" class="d-flex justify-content-center">
 
-                <div id="demo-app-functions">
-
-                    <!-- Single Picture Uploader -->
-
-                    <!-- Popup Alert -->
-                    <div class="modal fade" id="warning-popup" tabindex="-1" area-hidden="true">
-                        <div class="modal-dialog d-flex" style="height:100vh">
-                            <div class="modal-content m-auto p-2">
-                                <div class="modal-header d-flex justify-content-center">
-                                    <h5 class="modal-title" id="warning-title"></h5>
-                                </div>
-                                <div class="modal-bocy p-3">
-                                    <p id="warning-content"> </p>
-                                </div>
-                                <div class="modal-footer d-flex justify-content-center">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                </div>
-                            </div>
-                        </div>
                     </div>
-                    <!-- END Popup Alert -->
-
-                    <div id="single-pic-preview" class="d-flex justify-content-center">
-                        <div id="picture-loader" class="p-3 position-absolute" style="display: none !important;">
-                            <div class="d-flex flex-column align-items-center justify-content-center"
-                                style="width:100%; height: 100%">
-                                <img src="img/loading.gif" alt=""
-                                    style="border:none !important; width:50px; box-shadow:none">
-                                <p id="loading-text"></p>
-                            </div>
-                        </div>
-                        <div id="narration-result-container" class="p-3 position-absolute"
-                            style="display: none !important;">
-                        </div>
-                    </div>
-                    <div class="mx-auto mt-4 p-3" id="single-pic-uploader">
+                    <!-- -END- Img Preview -->
+                    <!-- Uploader drag drop box -->
+                    <div class="mx-auto mt-4 p-3" id="s-img-uploader">
                         <form class="text-center">
                             <i class="mb-3 material-icons">cloud_upload</i>
                             <h5>Drag and drop single image here</h5>
                             <p>(Max file size : 5mb)</p>
                             <p>or</p>
-                            <input type="file" accept="image/*" id="single-pic-input"
-                                onchange="uploadSingplePic(this.files)">
-                            <label class="px-3 sentie-btn-primary sentie-btn-green" for="single-pic-input">Upload a
+                            <input type="file" accept="image/*" id="s-img-input" onchange="uploadImg(this.files)">
+                            <label class="px-3 s-btn-primary s-btn-green" for="s-img-input">Upload a
                                 Picture</label>
                         </form>
                     </div>
-                    <!-- End Singple Picture Uploader -->
+                    <!-- -END- Image Uploader -->
 
-                    <div id="control-btns-container"
-                        class="mt-4 d-flex flex-sm-row flex-column-reverse justify-content-center"
-                        style="display: none !important;">
-                        <div class="mt-2 col-sm-4 col-12">
-                            <label class="text-center text-sm-right" id="upload-anohter-pic" for="single-pic-input"
-                                style="text-decoration: underline">
-                                Upload Another Picture</label>
-                        </div>
-                        <div class="col-sm-4 col-12 text-center">
-                            <button class="px-4 sentie-btn-primary sentie-btn-green" id="detect-pic-object-btn"
-                                onclick="detectPicObject()">
-                                Analyse Image</button>
-                            <button class="px-4 sentie-btn-primary sentie-btn-grey" id="restart-btn" onclick="restart()"
-                                style="display: none;">Restart</button>
-                        </div>
-                        <div class="col-sm-4 col-12"></div>
-                    </div>
-                    <!-- End of Main Functions -->
                 </div>
-                <!-- End of Demo App Main Area -->
+
+                <div id="resultContainer" class="col-12 col-lg-6" display="none">
+                    <!-- +-----------------------------+ -->
+                    <!-- |  Demo APP Results Goes Here | -->
+                    <!-- +-----------------------------+ -->
+                </div>
             </div>
+            <!-- +--------------------+ -->
+            <!-- |  Demo APP Controls | -->
+            <!-- +--------------------+ -->
+            <div class="m-auto pt-4 d-flex flex-column-reverse flex-sm-row justify-content-center align-items-center"
+                style="max-width: 600px;">
+                <div class="col-3 text-center">
+                    <button id="btn-cancel" class="mb-4 s-btn-cancel" style="display: none" onclick="handleCancel()">
+                        Cancel </button>
+                </div>
+                <div class="col-6 text-center">
+                    <button id="mainFunction" class="mb-4 mx-auto text-center s-btn-primary s-btn-green"
+                        style="display: none;" onclick="handleMainFunction()">Narrate Image</button>
+                    <button id="btn-restart" class="mb-4  mx-auto text-center s-btn-primary s-btn-green"
+                        style="display: none !important;" onclick="handleRestart()"> Restart </button>
+                </div>
+                <div class="col-3">
+                </div>
+            </div>
+            <!-- -END- Demo App Controls -->
+            <!-- -END- Demp App Container  -->
+
+        </div>
+        <!-- Back button to all demo app -->
+        <div class="mt-3 d-flex justify-content-center">
+            <a href="https://platform.sentient.io/demoapps" target="_blank">
+                <button class="d-flex row align-items-center s-btn-cancel">
+                    <span class="material-icons mr-2 ">arrow_back</span>
+                    All Demo Apps
+                </button>
+            </a>
         </div>
     </div>
+    <!-- -END- Main Container -->
 
-    <!-- Footer -->
+    <!-- +--------+ -->
+    <!-- | Footer | -->
+    <!-- +--------+ -->
     <footer class="shadow-lg" style="background-color:white">
         <div class="mx-auto pt-5 pb-3 d-flex flex-column justify-content-center flex-lg-row" style="max-width: 1000px;">
             <div class="col-12 col-lg-8">
                 <div class="text-center text-lg-left">
                     <p>
-                        Designed and built by Sentient.io with the help of our contributors.
+                        Designed and built by <a href="https://www.sentient.io/" target="_blank"
+                            style="color:#bb9968">Sentient.io</a> with the help of our contributors.
                     </p>
                     <p>
-                        App version: 1.0.0. | Source code for app available
-                        <a href="https://github.com/sentient-io/platform_demo-app_narrate-image" target="_blank">
-                            here.</a>
+                        App version: 1.0.2 | Source code for app available
+                        <a href="https://github.com/sentient-io/platform-demo_apps-image-narration" target="_blank"
+                            style="color:#bb9968">here</a>.
                     </p>
                 </div>
             </div>
             <div class="col-12 col-lg-4">
-                <img src="img/sentient-logo.png" alt="Sentient.io logo" class="m-auto d-block" style="max-width: 280px;">
+                <a href="https://www.sentient.io/" target="_blank">
+                    <img src="img/sentient-logo.png" alt="Sentient.io logo" class="m-auto d-block"
+                        style="max-width:280px">
+                </a>
             </div>
         </div>
     </footer>
-    <!-- End footer -->
+    <!-- -End- footer -->
 
-    <!-- Import Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
 
+    <!-- jQuery(Google) first, then Popper.js, then Bootstrap JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
         crossorigin="anonymous"></script>
-		
-    <!-- app js is where to place the API key -->
+
+    <!-- Stores API Key -->
     <script src="app.js"></script>
-    <script src="js/script.js"></script>
-    <script src="js/narrateObject.js"></script>
-    <script src="js/detectObject.js"></script>
-    <script src="js/sentenceTemplate.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/objectDetection.js"></script>
+    <script src="js/textToSpeechENG.js"></script>
 
 </body>
-<script>
-
-</script>
 
 </html>

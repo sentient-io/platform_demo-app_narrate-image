@@ -1,0 +1,4 @@
+# Ignore testing and template files
+test.html
+template.html
+test.js
