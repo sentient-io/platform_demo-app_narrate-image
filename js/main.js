@@ -43,6 +43,9 @@ handleMainFunction = () => {
 			}).then((loader) => {
 				$('#img-narration-description').append(loader);
 			});
+		})
+		.catch(() => {
+			handleRestart();
 		});
 };
 

@@ -21,10 +21,16 @@ objectDetection = (base64) => {
 			error: (err) => {
 				loadingEnd();
 				let errTitle = `Error : ${err.status}`;
-				let errMsg = JSON.parse(err.responseText).message;
+				let errMsg = err.responseText
+					? JSON.parse(err.responseText).message
+					: err.status == 500
+					? // Handles damaged jpeg file format
+					  'Internal Server Error'
+					: err;
 				toggleAlert(errTitle, errMsg);
 				// Clear record of uploaded file
 				console.log(err);
+				reject();
 			},
 		});
 	});
