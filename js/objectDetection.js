@@ -26,6 +26,8 @@ objectDetection = (base64) => {
 					: err.status == 500
 					? // Handles damaged jpeg file format
 					  'Internal Server Error'
+					: err.status == 503
+					? 'Service Unavailable'
 					: err;
 				toggleAlert(errTitle, errMsg);
 				// Clear record of uploaded file
